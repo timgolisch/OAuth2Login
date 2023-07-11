@@ -6,7 +6,7 @@ Detailed article explaining how to use the library can be found on CodeProject:
 [OAuth2 Social logins open source library - Facebook, Google, Twitter, PayPal](http://www.codeproject.com/Articles/1006013/OAuth-Social-logins-open-source-library-Facebook-G)
 
 ## Quick start
-
+https://github.com/rockstardev/OAuth2Login
 After cloning repository you need to create Web.Oauth.config file and populate it with ClientId & ClientSecret values tied to your apps. Here is example config file:
 
     <?xml version="1.0"?>

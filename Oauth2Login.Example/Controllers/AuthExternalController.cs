@@ -53,6 +53,7 @@ namespace MultipleOauth2Mvc.Controllers
                     // This is demo, so I am not handling saving of data into database
                     // 
                     AuthCallbackResult respModel = null;
+                    TokenCallbackResult respTModel = null;
                     AuthExternalMode authMode = TempData["AuthExternalMode"] as AuthExternalMode? ?? AuthExternalMode.Default;
                     if (authMode == AuthExternalMode.AttachLogin)
                     {
@@ -67,6 +68,7 @@ namespace MultipleOauth2Mvc.Controllers
                     {
                         // respModel = InsertNewUserIntoDatabase(service);
                         respModel = new AuthCallbackResult {RedirectUrl = "/AuthExternal/LoginSuccess"};
+                        respTModel = new TokenCallbackResult {RedirectUrl = "/AuthExternal/TokenSuccess"};
                     }
 
                     return View(respModel);
@@ -93,6 +95,10 @@ namespace MultipleOauth2Mvc.Controllers
             return View();
         }
 
+        public ActionResult TokenSuccess()
+        {
+            return View();
+        }
         // plumbing
     }
 }
