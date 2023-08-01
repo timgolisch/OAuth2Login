@@ -90,13 +90,40 @@ namespace MultipleOauth2Mvc.Controllers
             return View();
         }
 
-        public ActionResult LoginSuccess()
+        public ActionResult LoginSuccess(string id)
         {
+            if (id == null) Response.Redirect("/");
+            var service = BaseOauth2Service.GetService(id);
+            if (service != null)
+            {
+                try
+                {
+                    var redirectUrl = service.ValidateLogin(Request);
+                    if (redirectUrl != null)
+                    {
+                        return Redirect(redirectUrl);
+                    }
+                    ViewBag.Email = service.UserData.Email;
+                    ViewBag.Name = service.UserData.FullName;
+                    ViewBag.Id = service.UserData.UserId;
+
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                    //RedirectToAction("Error");
+                }
+            }
+            else
+            {
+                return RedirectToAction("LoginFail");
+            }
             return View();
         }
 
-        public ActionResult TokenSuccess()
+        public ActionResult TokenSuccess(string id)
         {
+            var service = BaseOauth2Service.GetService(id);
             return View();
         }
         // plumbing

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Web;
+using System.Web.Mvc;
 using Newtonsoft.Json;
 using Oauth2Login.Client;
 using Oauth2Login.Core;
@@ -31,7 +32,7 @@ namespace Oauth2Login.Service
             return _oauthUrl;
         }
 
-        public override string RequestToken(HttpRequestBase request)
+        public override string RequestToken(System.Web.HttpRequestBase request)
         {
             var code = request.Params["code"];
             if (String.IsNullOrEmpty(code))
@@ -49,6 +50,25 @@ namespace Oauth2Login.Service
             string resonseJson = HttpPost(tokenUrl, postData);
             return JsonConvert.DeserializeAnonymousType(resonseJson, new { access_token = "" }).access_token;
         }
+        //public async System.Threading.Tasks.Task<ActionResult> GoogleLoginCallback(string code)
+        //{
+        //    string userProfileJson = null;
+        //    try
+        //    {
+        //        var ClientSecret = "Enter Client Secret here";
+        //        var ClientID = "Enter Client Id here";
+        //        var url = "https://localhost:44375/Login/GoogleLoginCallback";
+        //        //var token = await GoogleAuth.GetAuthAccessToken(code, ClientID, ClientSecret, url);
+        //        //userProfileJson = await GoogleAuth.GetProfileResponseAsync(token.AccessToken.ToString());
+        //        //var googleUser = JsonConvert.DeserializeObject<GoogleProfile>(userProfile);
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        System.Diagnostics.Debug.WriteLine(ex.Message);
+        //    }
+        //    return null;// JsonConvert.DeserializeObject<GoogleProfile>(userProfileJson); //RedirectToAction("index", "Users");
+        //}
 
         public override void RequestUserProfile()
         {

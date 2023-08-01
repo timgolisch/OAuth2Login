@@ -15,7 +15,13 @@
         openWindow: function (url, name, iWidth, iHeight) {
             var iTop = (window.screen.availHeight - 30 - iHeight) / 2;
             var iLeft = (window.screen.availWidth - 10 - iWidth) / 2;
-            window.open(url, name, 'height=' + iHeight + ',innerHeight=' + iHeight + ',width=' + iWidth + ',innerWidth=' + iWidth + ',top=' + iTop + ',left=' + iLeft + ',toolbar=no,menubar=no,scrollbars=yes,resizeable=no,location=no,status=no');
+            var pop = window.open(url, name, 'height=' + iHeight + ',innerHeight=' + iHeight + ',width=' + iWidth + ',innerWidth=' + iWidth + ',top=' + iTop + ',left=' + iLeft + ',toolbar=no,menubar=no,scrollbars=yes,resizeable=no,location=no,status=no');
+            var timer = setInterval(function () {
+                if (pop.closed) {
+                    clearInterval(timer);
+                    window.location.href = "/Home/LoggedIn";
+                }
+            }, 1000);
         },
 
         authFacebook: function (mode) {

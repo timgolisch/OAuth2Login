@@ -1,4 +1,6 @@
-﻿using System;
+﻿// Ignore Spelling: Auth Oauth
+
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
@@ -90,7 +92,7 @@ namespace Oauth2Login.Service
             UserData.OAuthToken = _client.Token;
             UserData.OAuthTokenSecret = _client.TokenSecret;
 
-            return null;
+            return null;// UserData.Email;
         }
 
         public void ImpersonateUser(string oauthToken, string oauthTokenSecret)

@@ -16,5 +16,9 @@ namespace MultipleOauth2Mvc.Controllers
         {
             return View();
         }
+        public ActionResult LoggedIn()
+        {
+            return View();
+        }
     }
 }

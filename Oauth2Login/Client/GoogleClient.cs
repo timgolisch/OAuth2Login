@@ -1,4 +1,6 @@
-﻿using Oauth2Login.Configuration;
+﻿// Ignore Spelling: Oauth
+
+using Oauth2Login.Configuration;
 using Oauth2Login.Core;
 using Oauth2Login.Service;
 

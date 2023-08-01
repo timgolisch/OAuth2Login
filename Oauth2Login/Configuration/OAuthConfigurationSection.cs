@@ -1,4 +1,6 @@
-﻿using System.Configuration;
+﻿// Ignore Spelling: Auth Oauth
+
+using System.Configuration;
 
 namespace Oauth2Login.Configuration
 {
